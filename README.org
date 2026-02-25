@@ -12,9 +12,7 @@
 #+SETUPFILE: ./css/simple_inlineUCM.theme 
 # ###########
 
-#+begin_abstract
-Este repositorio ofrece un pequeño servicio a la comunidad de profesores de la UCM, ya que permite usar un programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
-#+end_abstract
+Este [[https://github.com/mbujosab/deMoodleaGEA][repositorio]] ofrece un pequeño servicio a la comunidad de profesores de la UCM, ya que permite usar un programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
 
 #+BEGIN_CENTER
 #+ATTR_HTML: :width 300px :align center
