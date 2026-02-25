@@ -23,7 +23,8 @@ Por este motivo, he creado un script en [[https://www.python.org/][python]] que,
 
 * Si no utilizas Python o no lo tienes instalado
 
-No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio con MyBinder. Para ello, accede al cuaderno de Jupyter [[https://mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2Fdoc%2Ftree%2FDeMoodleaActas.ipynb][*aquí*]], léelo y sigue las indicaciones que encontrarás en él.
+No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio con MyBinder. Para ello, accede al cuaderno de Jupyter
+[[https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2Fdoc%2Ftree%2FDeMoodleaActas.ipynb][*aquí*]], léelo y sigue las indicaciones que encontrarás en él.
 
 * Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio
 
@@ -51,4 +52,5 @@ dependencies:
   - pip
   - ipykernel
   - pandas
+  - openpyxl
 #+END_SRC
