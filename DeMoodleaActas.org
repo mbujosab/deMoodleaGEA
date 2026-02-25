@@ -34,7 +34,7 @@ ficheroGEA    = 'NombreDelArchivoDescargadoDesdeGEA.xls'     # no te olvides de 
 ficheroMoodle = 'NombreDelArchivoDescargadoDesdeMoodle.xlsx' # no te olvides de la extensión del archivo (xlsx)
 columnaNotas  = 'NombredeLaColumnaConLasNotasParaActas'      # Pasa a actas la columna de calificaciones correcta
 
-actasParaSubirAGEA = 'NombreFicheroASubir.xls'               # el fichero (xls) con las notas que subirás a GEA 
+actasParaSubirAGEA = 'NombreFicheroASubir.xlsx'              # el fichero con las notas que subirás a GEA 
 
 de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
                    subdirectorio + '/' + ficheroGEA,
@@ -57,7 +57,7 @@ ficheroGEA    = 'CalificacionExcel.xls'
 ficheroMoodle = '00-123456-Calificaciones.xlsx'
 columnaNotas  = 'Total ConvocatoriaOrdinaria (Real)'
 
-actasParaSubirAGEA = 'acta-grupo-alpha.xls'
+actasParaSubirAGEA = 'acta-grupo-alpha.xlsx'
 
 de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
                    subdirectorio + '/' + ficheroGEA,
@@ -65,9 +65,9 @@ de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
                                           index=False) 
 #+END_SRC
 
-Es probable que obtengas un mensaje de advertencia, porque el método para crear ficheros con la antigua extensión =xls= que utiliza =de_moodle_a_actas.py= está obsoleto. No obstante, en el momento de creación de este cuaderno electrónico, dicho método aún funcionaba (a pesar del mensaje de advertencia).
+# Es probable que obtengas un mensaje de advertencia, porque el método para crear ficheros con la antigua extensión =xls= que utiliza =de_moodle_a_actas.py= está obsoleto. No obstante, en el momento de creación de este cuaderno electrónico, dicho método aún funcionaba (a pesar del mensaje de advertencia).
 
-(/Esto quiere decir que si GEA continúa funcionando solo con la obsoleta extensión =xls=, este programa dejará de funcionar en algún momento/).
+# (/Esto quiere decir que si GEA continúa funcionando solo con la obsoleta extensión =xls=, este programa dejará de funcionar en algún momento/).
 
 * Cómo usar el programa
 
@@ -158,7 +158,7 @@ ficheroGEA    = 'CalificacionExcel.xls'
 ficheroMoodle = '00-123456-Calificaciones.xlsx'
 columnaNotas  = 'Total ConvocatoriaOrdinaria (Real)'
 
-actasParaSubirAGEA = 'acta-asignatura-grupo-letra.xls'
+actasParaSubirAGEA = 'acta-asignatura-grupo-letra.xlsx'
 
 de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
                    subdirectorio + '/' + ficheroGEA,
