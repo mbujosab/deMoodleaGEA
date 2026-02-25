@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- 2026-02-25 mié 08:27 -->
+<!-- 2026-02-25 mié 09:39 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>=de_Moodle_a_actas.py=: script de ayuda para profes de la UCM</title>
@@ -17,7 +17,7 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 <div id="content" class="content">
 <header>
 <h1 class="title"><code>de_Moodle_a_actas.py</code>: script de ayuda para profes de la UCM</h1>
-</header><div class="abstract" id="org8c5d3f4">
+</header><div class="abstract" id="org2cfc4ab">
 <p>
 Este repositorio ofrece un pequeño servicio a la comunidad de profesores de la UCM, pues permite usar un pequeño programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
 </p>
@@ -29,18 +29,18 @@ Si, como yo, calificas a los estudiantes en Moodle, es probable que hayas notado
 </p>
 
 <p>
-Por este motivo, he creado un script en <a href="https://www.python.org/">python</a> que, utilizando el módulo <a href="https://pandas.pydata.org/"><code>pandas</code></a>, genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (que, por algún motivo que no alcanzo a comprender, no está codificado de la misma forma en Moodle y en GEA&#x2026; No te preocupes por ese detalle; el guion <a href="de_moodle_a_actas.py"><code>de_Moodle_a_actas.py</code></a> se encarga de esta absurda dificultad sin ningún problema. <a href="pasandoNotasDeMoodleaGEA.html">Puedes ver el código aquí</a>).
+Por este motivo, he creado un script en <a href="https://www.python.org/">python</a> que, utilizando el módulo <a href="https://pandas.pydata.org/"><code>pandas</code></a>, genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (que, por algún motivo que no alcanzo a comprender, no está codificado de la misma forma en Moodle y en GEA&#x2026; No te preocupes por ese detalle; el guion <code>de_moodle_a_actas.py</code> se encarga de esta absurda dificultad sin ningún problema. <a href="pasandoNotasDeMoodleaGEA.html">Puedes ver el código aquí</a>).
 </p>
-<div id="outline-container-org654cb29" class="outline-2">
-<h2 id="org654cb29"><span class="section-number-2">1.</span> Si no utilizas Python o no lo tienes instalado</h2>
+<div id="outline-container-org86e16d8" class="outline-2">
+<h2 id="org86e16d8"><span class="section-number-2">1.</span> Si no utilizas Python o no lo tienes instalado</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-No hay problema. Puedes ejecutar el programa directamente desde tu navegador visitando <a href="https://mybinder.org/">MyBinder</a>. Accede al cuaderno de Jupyter aquí, léelo y sigue las indicaciones que encontrarás en él.
+No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio con MyBinder. Para ello, accede al cuaderno de Jupyter <a href="https://mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2Fdoc%2Ftree%2FDeMoodleaActas.ipynb"><b>aquí</b></a>, léelo y sigue las indicaciones que encontrarás en él.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc83c655" class="outline-2">
-<h2 id="orgc83c655"><span class="section-number-2">2.</span> Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio</h2>
+<div id="outline-container-org997ca2d" class="outline-2">
+<h2 id="org997ca2d"><span class="section-number-2">2.</span> Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Entonces, seguramente podrás adaptar el código a tus necesidades siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.
@@ -50,7 +50,7 @@ Entonces, seguramente podrás adaptar el código a tus necesidades siempre y cua
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Marcos Bujosa</p>
-<p class="date">Created: 2026-02-25 mié 08:27</p>
+<p class="date">Created: 2026-02-25 mié 09:39</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
