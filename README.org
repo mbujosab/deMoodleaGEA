@@ -1,0 +1,29 @@
+#+TITLE: =de_Moodle_a_actas.py=: script de ayuda para profes de la UCM
+
+#+author: Marcos Bujosa
+#+LANGUAGE: es
+
+#+EXPORT_FILE_NAME: index
+
+#+OPTIONS: toc:nil
+
+# ###########
+# ESTO DA EL FORMATO FINAL DE LA PÁGINA WEB. VÉASE [[https://olmon.gitlab.io/org-themes/]]
+#+SETUPFILE: ./css/simple_inlineUCM.theme 
+# ###########
+
+#+begin_abstract
+Este repositorio ofrece un pequeño servicio a la comunidad de profesores de la UCM, pues permite usar un pequeño programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
+#+end_abstract
+
+Si, como yo, calificas a los estudiantes en Moodle, es probable que hayas notado que el Excel de notas que genera Moodle no es apto para ser subido a GEA. Y es una pena, pues la alternativa de ingresar manualmente las notas una por una en la web del portal de gestión académica (GEA) es tediosa y propensa a errores.
+
+Por este motivo, he creado un script en [[https://www.python.org/][python]] que, utilizando el módulo [[https://pandas.pydata.org/][=pandas=]], genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (que, por algún motivo que no alcanzo a comprender, no está codificado de la misma forma en Moodle y en GEA... No te preocupes por ese detalle; el guion [[file:de_moodle_a_actas.py][=de_Moodle_a_actas.py=]] se encarga de esta absurda dificultad sin ningún problema. [[file:pasandoNotasDeMoodleaGEA.html][Puedes ver el código aquí]]).
+
+* Si no utilizas Python o no lo tienes instalado
+
+No hay problema. Puedes ejecutar el programa directamente desde tu navegador visitando [[https://mybinder.org/][MyBinder]]. Accede al cuaderno de Jupyter aquí, léelo y sigue las indicaciones que encontrarás en él.
+
+* Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio
+
+Entonces, seguramente podrás adaptar el código a tus necesidades siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.

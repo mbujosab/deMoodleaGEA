@@ -1,0 +1,60 @@
+
+Código python para crear sendos archivos de excel que simulen la estructura del los archivos excel de Moodle y GEA.
+
+#+BEGIN_SRC jupyter-python :results none
+import pandas as pd
+import random
+
+# Fijar la semilla
+random.seed(42)
+
+# 1. Definir los datos de los personajes graciosos
+datos = [
+    {"n": "Pikachu", "a": "Amarillo", "id": 25, "letra": "P", "nota": 9.5},
+    {"n": "Darth", "a": "Vader", "id": 666666, "letra": "D", "nota": 4.0},
+    {"n": "James", "a": "Bond", "id": 7, "letra": "B", "nota": 7.0},
+    {"n": "Miguel de", "a": "Cervantes Saavedra", "id": 16161, "letra": "C", "nota": 10.0},
+    {"n": "Jack", "a": "Sparrow", "id": 412, "letra": "S", "nota": 5.5},
+    {"n": "Shrek", "a": "Sánchez", "id": 123, "letra": "S", "nota": 6.0},
+    {"n": "Han", "a": "Solo", "id": 1, "letra": "S", "nota": 8.0},
+    {"n": "Willy", "a": "Wonka", "id": 999, "letra": "W", "nota": 7.5},
+    {"n": "Kakarotto", "a": "Son Goku", "id": 9001, "letra": "G", "nota": 9.8},
+    {"n": "Harry", "a": "Potter", "id": 777, "letra": "P", "nota": 8.5},
+    {"n": "Luke", "a": "Skywalker", "id": 1138, "letra": "S", "nota": 7.2},
+    {"n": "Sancho", "a": "Panza", "id": 16162, "letra": "P", "nota": 9.0},
+]
+
+# --- CREAR CalificacionExcel.xls ---
+# Formato: Apellido, Nombre | ID 8 dígitos con ceros | Columnas extra
+df1_data = {
+    "Doc. de identidad": [str(d['id']).zfill(8) for d in datos],
+    "Alumno/a": [f"{d['a']}, {d['n']}" for d in datos],
+    "Nota num.": [str(d['nota']) for d in datos],
+    "Calificación": [""] * 12
+}
+df1 = pd.DataFrame(df1_data)
+df1.to_excel("CalificacionExcel.xls", index=False)
+
+# --- CREAR 00-123456-Calificaciones.xlsx ---
+# Generar números aleatorios
+ids_random = [random.randint(10000, 99999) for _ in range(len(datos))]
+usernames_random = [random.randint(1000000, 9999999) for _ in range(len(datos))]
+
+# Formato: Nombre | Apellido | ID sin ceros + Letra | Nota
+df2_data = {
+    "Nombre": [d['n'] for d in datos],
+    "Apellido(s)": [d['a'] for d in datos],
+    "[[id]]": ids_random,
+    "Nombre de usuario": usernames_random, 
+    "Número de ID": [f"{d['id']}{d['letra']}" for d in datos],
+    "Dirección de correo": [f"{d['n'].lower()}@complu.es" for d in datos],
+    "Total ConvocatoriaOrdinaria (Real)": [d['nota'] for d in datos],
+    "Total ConvocatoriaOrdinaria (Retroalimentación)":  [""] * 12,
+    "Última descarga de este curso": ["1234567890"] * 12,
+}
+df2 = pd.DataFrame(df2_data)
+df2.to_excel("00-123456-Calificaciones.xlsx", index=False)
+
+print("¡Archivos creados con éxito en tu carpeta actual!")
+#+END_SRC
+

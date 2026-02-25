@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<!-- 2026-02-23 lun 16:41 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</title>
+<meta name="author" content="Marcos Bujosa" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</h1>
+<div id="outline-container-org017f4e3" class="outline-2">
+<h2 id="org017f4e3"><span class="section-number-2">1.</span> Primer paso</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+La función <code>de_Moodle_a_actas</code> requiere el uso del módulo <code>pandas</code>. 
+También debemos cargar el script de Python <code>de_moodle_a_actas.py</code>.
+Para cargar tanto el módulo como el script, <b>ejecuta la siguiente celda de código</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #0000FF; font-weight: bold;">import</span> pandas <span style="color: #0000FF; font-weight: bold;">as</span> pd
+%run de_moodle_a_actas.py
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6dde683" class="outline-2">
+<h2 id="org6dde683"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<b>Importante</b>: <i>Antes de usar el siguiente bloque de código, lee la sección 3 (Cómo usar el programa).</i> Luego:
+</p>
+<ol class="org-ol">
+<li>Crea la carpeta del grupo (por ejemplo <code>grupoA</code>) y sube a dicha carpeta los archivos Excel que has descargado desde Moodle y GEA.</li>
+<li>Luego edita las cadenas de texto de este bloque de código con los nombres correctos tanto de la carpeta como de los archivos Excel. <b>Si ejecutas el siguiente bloque de código sin editar correctamente los nombres, obtendrás un error</b>.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #BA36A5;">subdirectorio</span> = <span style="color: #008000;">'grupoLetra'</span>                                 <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">esta carpeta debe estar creada con antelaci&#243;n
+</span>
+<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeGEA.xls'</span>     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xls)
+</span>
+<span style="color: #BA36A5;">ficheroMoodle</span> = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeMoodle.xlsx'</span> <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xlsx)
+</span><span style="color: #BA36A5;">columnaNotas</span>  = <span style="color: #008000;">'NombredeLaColumnaConLasNotasParaActas'</span>      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Pasa a actas la columna de calificaciones correcta
+</span>
+<span style="color: #BA36A5;">actasParaSubirAGEA</span> = <span style="color: #008000;">'NombreFicheroASubir.xls'</span>               <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">el fichero (xls) con las notas que subir&#225;s a GEA 
+</span>
+de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + ficheroMoodle,
+                   subdirectorio + <span style="color: #008000;">'/'</span> + ficheroGEA,
+                   columnaNotas).to_excel(subdirectorio + <span style="color: #008000;">'/'</span> + actasParaSubirAGEA,
+                                          index=<span style="color: #D0372D;">False</span>) 
+
+</pre>
+</div>
+
+<p>
+<i>Nota</i>: Desde Moodle se descargan archivos con extensión <code>xlsx</code>, pero desde GEA puede que la extensión sea <code>xls</code>.
+</p>
+</div>
+<div id="outline-container-org007e39f" class="outline-3">
+<h3 id="org007e39f"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Dado que en la carpeta <code>GrupoAlpha</code> de este repositorio hay dos archivos Excel similares a los que se obtienen en Moodle y GEA, si ejecutas este bloque se generará un nuevo fichero <code>acta-grupo-alpha.xls</code> creado a partir de los dos archivos Excel de la carpeta <code>GrupoAlpha</code> donde las notas están cumplimentadas y listas para ser subidas a GEA (si dicho grupo y alumnos fueran reales).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #BA36A5;">subdirectorio</span> = <span style="color: #008000;">'GrupoAlpha'</span>
+
+<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'CalificacionExcel.xls'</span>
+
+<span style="color: #BA36A5;">ficheroMoodle</span> = <span style="color: #008000;">'00-123456-Calificaciones.xlsx'</span>
+<span style="color: #BA36A5;">columnaNotas</span>  = <span style="color: #008000;">'Total ConvocatoriaOrdinaria (Real)'</span>
+
+<span style="color: #BA36A5;">actasParaSubirAGEA</span> = <span style="color: #008000;">'acta-grupo-alpha.xls'</span>
+
+de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + ficheroMoodle,
+                   subdirectorio + <span style="color: #008000;">'/'</span> + ficheroGEA,
+                   columnaNotas).to_excel(actasParaSubirAGEA,
+                                          index=<span style="color: #D0372D;">False</span>) 
+</pre>
+</div>
+
+<p>
+Es probable que obtengas un mensaje de advertencia, porque el método para crear ficheros con la antigua extensión <code>xls</code> que utiliza <code>de_moodle_a_actas.py</code> está obsoleto. No obstante, en el momento de creación de este cuaderno electrónico, dicho método aún funcionaba (a pesar del mensaje de advertencia).
+</p>
+
+<p>
+(<i>Esto quiere decir que si GEA continúa funcionando solo con la obsoleta extensión <code>xls</code>, este programa dejará de funcionar en algún momento</i>).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4bde1d0" class="outline-2">
+<h2 id="org4bde1d0"><span class="section-number-2">3.</span> Cómo usar el programa</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org56f3986" class="outline-3">
+<h3 id="org56f3986"><span class="section-number-3">3.1.</span> Paso previo</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li><p>
+<b>Obtener los archivos Excel del grupo</b>
+</p>
+<ul class="org-ul">
+<li>Accede a <a href="https://geaportal.ucm.es/index.html">https://geaportal.ucm.es/index.html</a> (si estás fuera de la UCM, deberás activar la VPN).</li>
+<li>Ve a <i>Calificación de actas</i>.</li>
+<li>Descarga el archivo Excel con las actas vacías del grupo a calificar (<code>CalificacionExcel.xls</code>).</li>
+<li>Descarga las calificaciones de tu grupo desde Moodle en un archivo Excel (por ejemplo, <code>aa-abcdef-Calificaciones.xlsx</code>).</li>
+</ul>
+
+<p>
+Si necesitas cumplimentar las actas de varios grupos, es recomendable guardar los dos archivos Excel correspondientes a cada grupo en un subdirectorio distinto para cada grupo (véase el siguiente punto).
+</p></li>
+
+<li><p>
+<b>Crear un directorio para los archivos del grupo</b>
+</p>
+
+<p>
+Para crear un nuevo directorio, haz clic en el ícono de carpeta que tiene el signo más (+) y que está ubicado en la parte superior de la columna izquierda. Si no ves la columna, puedes mostrarla haciendo clic en el ícono de la carpeta que está a la derecha.
+</p>
+
+
+<div id="org6d9885e" class="figure">
+<p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="350px" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Alternativamente, puedes crear un directorio utilizando el menú emergente que aparece al hacer clic con el botón derecho en la columna izquierda.</li>
+</ul></li>
+
+<li><p>
+<b>Subir los archivos de Excel obtenidos desde Moodle y GEA</b>
+</p>
+
+<p>
+Para subir tus archivos de Excel a la carpeta recién creada, haz clic en la flecha hacia arriba que se encuentra a la derecha del ícono de carpeta que tiene el signo más (+). Esto te permitirá cargar los archivos en el directorio adecuado para la calificación de tu grupo.
+</p></li>
+
+<li><p>
+<b>Ejecutar el código y descargar las actas para poder subirlas a GEA</b>
+</p>
+
+<p>
+Ejecuta el código que aparece más abajo y después descarga el archivo Excel con las actas que se habrá generado en el repositorio virtual de MyBinder (utiliza el menú emergente que aparece al hacer clic con el botón derecho en la columna izquierda). Una vez descargadas las actas, puedes subirlas a GEA.
+</p>
+
+
+<div id="orgc746b76" class="figure">
+<p><img src="imagenes/MenuDesplegable.png" alt="MenuDesplegable.png" width="350px" />
+</p>
+</div></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org022af28" class="outline-3">
+<h3 id="org022af28"><span class="section-number-3">3.2.</span> Ejemplo de uso</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Supongamos que el archivo descargado desde Moodle es <code>./GrupoAlpha/00-123456-Calificaciones.xlsx</code> (donde <code>./GrupoAlpha/</code> es la ruta hasta el archivo). Y que las calificaciones finales que se van a incluir en las actas se encuentran en la columna con la cabecera <code>Total ConvocatoriaOrdinaria (Real)</code>. 
+</p>
+
+<p>
+Además, el archivo con las actas sin cumplirmentar es <code>./GrupoAlpha/CalificacionExcel.xls</code>. 
+(<i>La carpeta y los archivos Excel del grupo ficticio Alpha ya están creados en la carpeta <code>GrupoAlpha</code> del repositorio para que puedas probar este ejemplo</i>).
+</p>
+
+<p>
+Entonces, basta con ejecutar lo siguiente:
+</p>
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #BA36A5;">notasConvocatoriaOrdinariaGrupoAlpha</span> = de_Moodle_a_actas(<span style="color: #008000;">'./GrupoAlpha/00-123456-Calificaciones.xlsx'</span>,
+                                                     <span style="color: #008000;">'./GrupoAlpha/CalificacionExcel.xls'</span>,
+                                                     <span style="color: #008000;">'Total ConvocatoriaOrdinaria (Real)'</span>)
+</pre>
+</div>
+<p>
+donde <code>notasConvocatoriaOrdinariaGrupoAlpha</code> es el nombre del DataFrame con la estructura de las actas, que estará cumplimentado con las notas de Moodle. Para ver el resultado:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #006FE0;">print</span>(notasConvocatoriaOrdinariaGrupoAlpha)
+</pre>
+</div>
+
+<p>
+Para guardar el DataFrame en un archivo Excel, se recomienda usar un nombre claro (así no habrá confusiones al subirlo a <a href="https://geaportal.ucm.es">https://geaportal.ucm.es</a>).
+</p>
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #BA36A5;">nombreFichero</span> = <span style="color: #008000;">'actaOrdinariaGrupoAlpha'</span>
+notasConvocatoriaOrdinariaGrupoAlpha.to_excel(nombreFichero + <span style="color: #008000;">'.xlsx'</span>, index=<span style="color: #D0372D;">False</span>)  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Guarda el DataFrame en un archivo Excel
+</span><span style="color: #006FE0;">print</span>(f<span style="color: #008000;">"El archivo Excel </span>{nombreFichero}<span style="color: #008000;">.xlsx se ha guardado correctamente."</span>)
+</pre>
+</div>
+
+<p>
+El archivo Excel que hemos creado se puede cargar en la página donde se rellenan las actas del grupo y asignatura correspondiente (haciendo clic en el enlace <span class="underline">"Cargar/descargar fichero Excel"</span>).
+</p>
+
+<p>
+<b>Ahora vuelve a la sección 2 y prueba con los archivos Excel de tus grupos</b>.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Marcos Bujosa</p>
+<p class="date">Created: 2026-02-23 lun 16:41</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

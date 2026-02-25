@@ -1,0 +1,115 @@
+#+title: Código Python para Transferir las Notas de Moodle a las Actas de GEA
+#+author: Marcos Bujosa
+#+LANGUAGE: es
+
+#+OPTIONS: toc:nil
+
+#+PROPERTY: header-args :eval never-export
+
+* Código en Python
+
+La función =de_Moodle_a_actas= utiliza el módulo =pandas=.
+
+#+BEGIN_SRC jupyter-python :tangle de_moodle_a_actas.py :results no
+import pandas as pd
+#+END_SRC
+
+A continuación, se presenta el código de la función:
+#+BEGIN_SRC jupyter-python :tangle de_moodle_a_actas.py :results no
+def de_Moodle_a_actas(excelMoodle: str, excelActas: str, nombre_columna_con_las_calificaciones: str):
+    """Función que cumplimenta una copia de las actas descargadas del portal de
+    gestión académica con las notas calculadas en Moodle y almacenadas en un
+    archivo Excel descargado desde Moodle.
+
+    excelMoodle: nombre (incluido el path) del archivo descargado desde Moodle
+    excelActas:  nombre (incluido el path) del archivo de actas descargado desde GEA
+    nombre_columna_con_las_calificaciones: nombre de la columna del archivo excelMoodle donde están las notas finales
+    """
+    
+    # Cargar los datos
+    df_moodle = pd.read_excel(excelMoodle)  # Excel descargado de Moodle
+    df_gea = pd.read_excel(excelActas)      # Excel de las actas (vacías) descargado de la página de calificación de actas (con extensión .xls).
+
+    # Limpia el DNI en el df_moodle para que no contenga la letra final
+    df_moodle['DNI_sin_letra'] = df_moodle['Número de ID'].str[:-1]
+
+    # Mantiene los ceros a la izquierda en el df_moodle
+    df_moodle['DNI_sin_letra'] = df_moodle['DNI_sin_letra'].str.zfill(8)
+
+    # Mantiene los ceros a la izquierda en el df_gea
+    df_gea['Doc. de identidad'] = df_gea['Doc. de identidad'].astype(str).str.zfill(8)
+
+    # Realiza el merge (unión) entre los dos DataFrames
+    merged_df = pd.merge(df_gea, 
+                         df_moodle[['DNI_sin_letra', nombre_columna_con_las_calificaciones]],
+                         left_on='Doc. de identidad', 
+                         right_on='DNI_sin_letra', 
+                         how='left')
+
+    # Rellena la columna 'Nota num.' con las notas de la columna correspondiente en df_moodle y reemplaza '-' por vacíos
+    df_gea['Nota num.'] = merged_df[nombre_columna_con_las_calificaciones].replace('-', '')
+
+    # Asegura que los NaN en 'Calificación' del DataFrame de GEA se mantengan como vacíos
+    df_gea['Calificación'] = df_gea['Calificación'].where(df_gea['Calificación'].notna(), '')
+
+    # Devuelve el DataFrame
+    return df_gea
+#+END_SRC
+
+#+RESULTS:
+
+Este código lee el archivo de Moodle y el archivo de las actas, identifica a los alumnos de ambos ficheros por el DNI y "pasa a actas" las notas de la columna que se especifique (que contiene las calificaciones finales). La función devuelve un DataFrame con la estructura del archivo de actas que incorpora las calificaciones de cada alumno.
+
+* Cómo usarlo
+
+** Paso previo
+
+- Desde [[https://geaportal.ucm.es/index.html]], en /Calificación de actas/, descarga un archivo Excel con las actas vacías del grupo que se va a calificar. 
+  (Dado que GEA siempre designa estos archivos como =CalificacionExcel.xls=, se recomienda guardarlos en un subdirectorio diferente para cada grupo).
+- Descarga las calificaciones desde Moodle en un archivo Excel, por ejemplo =00-123456-Calificaciones.xlsx=. 
+  (Es aconsejable guardar este archivo en el mismo directorio donde se han almacenado las actas del grupo correspondiente).
+
+** Ejecución de la función
+
+- Ejecuta 
+  #+BEGIN_SRC python :eval no
+de_Moodle_a_actas('path/ExcelDescargadoDesdeMoodle.xlsx', 'path/CalificacionExcel.xls', 'CabeceraColumnaConLasNotas')
+  #+END_SRC
+  donde =CalificacionExcel.xls= es el archivo con las actas descargadas desde [[https://geaportal.ucm.es/index.html]].
+
+* Ejemplo de uso
+
+Supongamos que el archivo descargado desde Moodle es =./GrupoAlpha/00-123456-Calificaciones.xlsx= (donde =./GrupoAlpha/= es la ruta hasta el archivo). Y que las calificaciones finales que se van a pasar a actas se encuentran en la columna con la cabecera =Total ConvocatoriaOrdinaria (Real)=. 
+
+Además, el archivo con las actas sin cumplimentar es =./GrupoAlpha/CalificacionExcel.xls=. Entonces, basta con ejecutar lo siguiente:
+#+BEGIN_SRC jupyter-python :results none
+# Uso de la función
+notasConvocatoriaOrdinariaGrupoAlpha = de_Moodle_a_actas('./GrupoAlpha/00-123456-Calificaciones.xlsx',
+                                                     './GrupoAlpha/CalificacionExcel.xls',
+                                                     'Total ConvocatoriaOrdinaria (Real)')
+#+END_SRC
+donde =notasConvocatoriaOrdinariaGrupoAlpha= es el nombre del DataFrame con la estructura de las actas, que estará cumplimentado con las notas de Moodle. Para ver el resultado:
+
+#+BEGIN_SRC jupyter-python :eval no
+print(notasConvocatoriaOrdinariaGrupoAlpha)
+#+END_SRC
+
+Para guardar el DataFrame en un archivo Excel, se recomienda utilizar un nombre descriptivo (de esta manera se evitarán confusiones al subirlo a [[https://geaportal.ucm.es]]).
+
+#+BEGIN_SRC jupyter-python :results no
+nombreFichero = 'actaOrdinariaGrupoAlpha'
+notasConvocatoriaOrdinariaGrupoAlpha.to_excel(nombreFichero + '.xlsx', index=False)  # Guarda el DataFrame en un archivo Excel
+print(f"El archivo Excel {nombreFichero}.xlsx se ha guardado correctamente.")
+#+END_SRC
+
+#+RESULTS:
+: El archivo Excel actaOrdinariaGrupoAlpha.xlsx se ha guardado correctamente.
+
+El archivo Excel que hemos creado se puede cargar en la página donde se cumplimentan las actas (haciendo clic en el enlace _"Cargar/descargar fichero Excel"_).
+
+* COMMENT Exportando este cuaderno electrónico a ipynb             :noexport:
+
+#+BEGIN_SRC emacs-lisp :results silent
+(require 'ox-ipynb)
+(ox-ipynb-export-org-file-to-ipynb-file "pasandoNotasDeMoodleaGEA.org")
+#+END_SRC
