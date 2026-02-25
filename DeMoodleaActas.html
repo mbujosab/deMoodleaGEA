@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2026-02-25 mié 13:16 -->
+<!-- 2026-02-25 mié 14:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</title>
@@ -197,8 +197,8 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</h1>
-<div id="outline-container-org10111cc" class="outline-2">
-<h2 id="org10111cc"><span class="section-number-2">1.</span> Primer paso</h2>
+<div id="outline-container-orgb2abc34" class="outline-2">
+<h2 id="orgb2abc34"><span class="section-number-2">1.</span> Primer paso</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 La función <code>de_Moodle_a_actas</code> requiere el uso del módulo <code>pandas</code>. 
@@ -213,8 +213,8 @@ Para cargar tanto el módulo como el script, <b>ejecuta la siguiente celda de c�
 </div>
 </div>
 </div>
-<div id="outline-container-org52ddc28" class="outline-2">
-<h2 id="org52ddc28"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
+<div id="outline-container-org6c9d5ab" class="outline-2">
+<h2 id="org6c9d5ab"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <b>Importante</b>: <i>Antes de usar el siguiente bloque de código, lee la sección 3 (Cómo usar el programa).</i> Luego:
@@ -246,8 +246,8 @@ de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + fi
 <i>Nota</i>: Desde Moodle se descargan archivos con extensión <code>xlsx</code>, pero desde GEA puede que la extensión sea <code>xls</code>.
 </p>
 </div>
-<div id="outline-container-org9d64a89" class="outline-3">
-<h3 id="org9d64a89"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
+<div id="outline-container-org8da3c20" class="outline-3">
+<h3 id="org8da3c20"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Dado que en la carpeta <code>GrupoAlpha</code> de este repositorio hay dos archivos Excel similares a los que se obtienen en Moodle y GEA, si ejecutas este bloque se generará un nuevo fichero <code>acta-grupo-alpha.xls</code> creado a partir de los dos archivos Excel de la carpeta <code>GrupoAlpha</code> donde las notas están cumplimentadas y listas para ser subidas a GEA (si dicho grupo y alumnos fueran reales).
@@ -263,21 +263,28 @@ Dado que en la carpeta <code>GrupoAlpha</code> de este repositorio hay dos archi
 
 <span style="color: #BA36A5;">actasParaSubirAGEA</span> = <span style="color: #008000;">'acta-grupo-alpha.xlsx'</span>
 
-de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + ficheroMoodle,
-                   subdirectorio + <span style="color: #008000;">'/'</span> + ficheroGEA,
-                   columnaNotas).to_excel(actasParaSubirAGEA,
-                                          index=<span style="color: #D0372D;">False</span>) 
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">DataFrame con las actas cumplimentadas
+</span><span style="color: #BA36A5;">df_Actas</span> = de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + ficheroMoodle,
+                       subdirectorio + <span style="color: #008000;">'/'</span> + ficheroGEA,
+                       columnaNotas)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Creaci&#243;n del fichero Excel
+</span>df_Actas.to_excel(actasParaSubirAGEA,
+                  index=<span style="color: #D0372D;">False</span>)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Visualizaci&#243;n del DataFrame
+</span><span style="color: #006FE0;">print</span>(df_Actas)
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf4242f0" class="outline-2">
-<h2 id="orgf4242f0"><span class="section-number-2">3.</span> Cómo usar el programa</h2>
+<div id="outline-container-org054eab4" class="outline-2">
+<h2 id="org054eab4"><span class="section-number-2">3.</span> Cómo usar el programa</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org1860ec3" class="outline-3">
-<h3 id="org1860ec3"><span class="section-number-3">3.1.</span> Paso previo</h3>
+<div id="outline-container-orgb2c0b70" class="outline-3">
+<h3 id="orgb2c0b70"><span class="section-number-3">3.1.</span> Paso previo</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li><p>
@@ -303,7 +310,7 @@ Para crear un nuevo directorio, haz clic en el ícono de carpeta que tiene el si
 </p>
 
 
-<div id="org766ad1e" class="figure">
+<div id="orgfc8c674" class="figure">
 <p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="350px" />
 </p>
 </div>
@@ -329,15 +336,15 @@ Ejecuta el código que aparece más abajo y después descarga el archivo Excel c
 </p>
 
 
-<div id="org9dad3b0" class="figure">
+<div id="org25d294a" class="figure">
 <p><img src="imagenes/MenuDesplegable.png" alt="MenuDesplegable.png" width="350px" />
 </p>
 </div></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgcc15923" class="outline-3">
-<h3 id="orgcc15923"><span class="section-number-3">3.2.</span> Ejemplo de uso</h3>
+<div id="outline-container-org0d3a744" class="outline-3">
+<h3 id="org0d3a744"><span class="section-number-3">3.2.</span> Ejemplo de uso</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Supongamos que el archivo descargado desde Moodle es <code>./GrupoAlpha/00-123456-Calificaciones.xlsx</code> (donde <code>./GrupoAlpha/</code> es la ruta hasta el archivo). Y que las calificaciones finales que se van a incluir en las actas se encuentran en la columna con la cabecera <code>Total ConvocatoriaOrdinaria (Real)</code>. 
@@ -389,7 +396,7 @@ El archivo Excel que hemos creado se puede cargar en la página donde se rellena
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Marcos Bujosa</p>
-<p class="date">Created: 2026-02-25 mié 13:16</p>
+<p class="date">Created: 2026-02-25 mié 14:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -6,6 +6,7 @@
 
 #+PROPERTY: header-args :eval never-export
 
+
 * Primer paso
 
 La función =de_Moodle_a_actas= requiere el uso del módulo =pandas=. 
@@ -59,10 +60,17 @@ columnaNotas  = 'Total ConvocatoriaOrdinaria (Real)'
 
 actasParaSubirAGEA = 'acta-grupo-alpha.xlsx'
 
-de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
-                   subdirectorio + '/' + ficheroGEA,
-                   columnaNotas).to_excel(actasParaSubirAGEA,
-                                          index=False) 
+# DataFrame con las actas cumplimentadas
+df_Actas = de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
+                       subdirectorio + '/' + ficheroGEA,
+                       columnaNotas)
+
+# Creación del fichero Excel
+df_Actas.to_excel(actasParaSubirAGEA,
+                  index=False)
+
+# Visualización del DataFrame
+print(df_Actas)
 #+END_SRC
 
 # Es probable que obtengas un mensaje de advertencia, porque el método para crear ficheros con la antigua extensión =xls= que utiliza =de_moodle_a_actas.py= está obsoleto. No obstante, en el momento de creación de este cuaderno electrónico, dicho método aún funcionaba (a pesar del mensaje de advertencia).
@@ -165,3 +173,4 @@ de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
                    columnaNotas).to_excel(actasParaSubirAGEA,
                                           index=False) 
 #+END_SRC
+

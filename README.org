@@ -8,27 +8,35 @@
 #+OPTIONS: toc:nil
 
 # ###########
-# ESTO DA EL FORMATO FINAL DE LA PÁGINA WEB. VÉASE [[https://olmon.gitlab.io/org-themes/]]
+# ESTO DÁ EL FORMATO FINAL DE LA PÁGINA WEB. VÉASE [[https://olmon.gitlab.io/org-themes/]]
 #+SETUPFILE: ./css/simple_inlineUCM.theme 
 # ###########
 
 #+begin_abstract
-Este repositorio ofrece un pequeño servicio a la comunidad de profesores de la UCM, pues permite usar un pequeño programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
+Este repositorio ofrece un pequeño servicio a la comunidad de profesores de la UCM, ya que permite usar un programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
 #+end_abstract
+
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 300px :align center
+[[https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb][file:imagenes/badge_logo.svg]]
+#+END_CENTER
 
 Si, como yo, calificas a los estudiantes en Moodle, es probable que hayas notado que el Excel de notas que genera Moodle no es apto para ser subido a GEA. Y es una pena, pues la alternativa de ingresar manualmente las notas una por una en la web del portal de gestión académica (GEA) es tediosa y propensa a errores.
 
-Por este motivo, he creado un script en [[https://www.python.org/][python]] que, utilizando el módulo [[https://pandas.pydata.org/][=pandas=]], genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (que, por algún motivo que no alcanzo a comprender, no está codificado de la misma forma en Moodle y en GEA... No te preocupes por ese detalle; el guion =de_moodle_a_actas.py= se encarga de esta absurda dificultad sin ningún problema. [[file:pasandoNotasDeMoodleaGEA.html][Puedes ver el código aquí]]).
-
+Por esta razón, he creado un script en [[https://www.python.org/][python]] que, utilizando el módulo [[https://pandas.pydata.org/][=pandas=]], genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (a pesar de que, por algún motivo que no alcanzo a comprender, el DNI no esté codificado de igual manera en Moodle y en GEA... [[file:pasandoNotasDeMoodleaGEA.html][Puedes ver el código aquí]]).
 
 * Si no utilizas Python o no lo tienes instalado
 
-No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio con MyBinder. Para ello, accede al cuaderno de Jupyter
-[[https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb][*aquí*]], léelo y sigue las indicaciones que encontrarás en él.
+No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio en MyBinder, con todo lo necesario ya instalado. Para ello, accede al cuaderno de Jupyter haciendo clic en el logo
+[[https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb][file:imagenes/badge_logo.svg]]. Lee el cuaderno de Jupyter que se abrirá tras unos instantes (quizá unos minutos si nadie ha accedido a él por algún tiempo, ya que entonces es necesario que se reinstalen los programas en la nube) y sigue las indicaciones que encontrarás allí. 
+
+Cada vez que accedas, se generará una nueva copia temporal del repositorio a la que solo tú tienes acceso y que desaparecerá tras unos minutos de inactividad. Esto quiere decir que si creas actas en tu copia, dichas actas no existen en otras copias. Es decir, cada copia es única y temporal.
+
+Si eso no te gusta, tendrás que instalar Python en tu ordenador (y Jupyter si quieres usar un notebook en lugar de un terminal) y hacer una copia local de este repositorio en tu ordenador.
 
 * Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio
 
-Entonces, seguramente podrás adaptar el código a tus necesidades siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.
+Entonces, seguramente podrás adaptar el código a tus necesidades, siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.
 
 * COMMENT Directorio =.binder= para MyBinder
 
@@ -36,7 +44,6 @@ Entonces, seguramente podrás adaptar el código a tus necesidades siempre y cua
 (unless (file-directory-p ".binder")
   (make-directory ".binder"))
 #+END_SRC
-
 
 ** Archivo =environment.yml= 
 

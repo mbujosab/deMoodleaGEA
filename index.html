@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- 2026-02-25 mié 13:11 -->
+<!-- 2026-02-25 mié 14:27 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>=de_Moodle_a_actas.py=: script de ayuda para profes de la UCM</title>
@@ -17,11 +17,19 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 <div id="content" class="content">
 <header>
 <h1 class="title"><code>de_Moodle_a_actas.py</code>: script de ayuda para profes de la UCM</h1>
-</header><div class="abstract" id="orgc193dab">
+</header><div class="abstract" id="orgb0d0f06">
 <p>
-Este repositorio ofrece un pequeño servicio a la comunidad de profesores de la UCM, pues permite usar un pequeño programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
+Este repositorio ofrece un pequeño servicio a la comunidad de profesores de la UCM, ya que permite usar un programa para cumplimentar las actas descargadas desde GEA con las notas calculadas en Moodle.
 </p>
 
+</div>
+
+<div class="org-center">
+
+<figure id="org5ed7b0a">
+<a href="https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb" width="300px" align="center"><img src="imagenes/badge_logo.svg" alt="badge_logo.svg" class="org-svg" width="300px" align="center"></a>
+
+</figure>
 </div>
 
 <p>
@@ -29,29 +37,37 @@ Si, como yo, calificas a los estudiantes en Moodle, es probable que hayas notado
 </p>
 
 <p>
-Por este motivo, he creado un script en <a href="https://www.python.org/">python</a> que, utilizando el módulo <a href="https://pandas.pydata.org/"><code>pandas</code></a>, genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (que, por algún motivo que no alcanzo a comprender, no está codificado de la misma forma en Moodle y en GEA&#x2026; No te preocupes por ese detalle; el guion <code>de_moodle_a_actas.py</code> se encarga de esta absurda dificultad sin ningún problema. <a href="pasandoNotasDeMoodleaGEA.html">Puedes ver el código aquí</a>).
+Por esta razón, he creado un script en <a href="https://www.python.org/">python</a> que, utilizando el módulo <a href="https://pandas.pydata.org/"><code>pandas</code></a>, genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (a pesar de que, por algún motivo que no alcanzo a comprender, el DNI no esté codificado de igual manera en Moodle y en GEA&#x2026; <a href="pasandoNotasDeMoodleaGEA.html">Puedes ver el código aquí</a>).
 </p>
-<div id="outline-container-orgd24a72a" class="outline-2">
-<h2 id="orgd24a72a"><span class="section-number-2">1.</span> Si no utilizas Python o no lo tienes instalado</h2>
+<div id="outline-container-org371ab19" class="outline-2">
+<h2 id="org371ab19"><span class="section-number-2">1.</span> Si no utilizas Python o no lo tienes instalado</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio con MyBinder. Para ello, accede al cuaderno de Jupyter
-<a href="https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb"><b>aquí</b></a>, léelo y sigue las indicaciones que encontrarás en él.
+No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio en MyBinder, con todo lo necesario ya instalado. Para ello, accede al cuaderno de Jupyter haciendo clic en el logo
+<a href="https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb"><img src="imagenes/badge_logo.svg" alt="badge_logo.svg" class="org-svg"></a>. Lee el cuaderno de Jupyter que se abrirá tras unos instantes (quizá unos minutos si nadie ha accedido a él por algún tiempo, ya que entonces es necesario que se reinstalen los programas en la nube) y sigue las indicaciones que encontrarás allí. 
+</p>
+
+<p>
+Cada vez que accedas, se generará una nueva copia temporal del repositorio a la que solo tú tienes acceso y que desaparecerá tras unos minutos de inactividad. Esto quiere decir que si creas actas en tu copia, dichas actas no existen en otras copias. Es decir, cada copia es única y temporal.
+</p>
+
+<p>
+Si eso no te gusta, tendrás que instalar Python en tu ordenador (y Jupyter si quieres usar un notebook en lugar de un terminal) y hacer una copia local de este repositorio en tu ordenador.
 </p>
 </div>
 </div>
-<div id="outline-container-orge3a54b1" class="outline-2">
-<h2 id="orge3a54b1"><span class="section-number-2">2.</span> Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio</h2>
+<div id="outline-container-org6c6d06a" class="outline-2">
+<h2 id="org6c6d06a"><span class="section-number-2">2.</span> Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Entonces, seguramente podrás adaptar el código a tus necesidades siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.
+Entonces, seguramente podrás adaptar el código a tus necesidades, siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Marcos Bujosa</p>
-<p class="date">Created: 2026-02-25 mié 13:11</p>
+<p class="date">Created: 2026-02-25 mié 14:27</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
