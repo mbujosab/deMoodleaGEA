@@ -8,3 +8,4 @@ dependencies:
   - ipykernel
   - pandas
   - openpyxl
+  - xlrd  

@@ -53,4 +53,5 @@ dependencies:
   - ipykernel
   - pandas
   - openpyxl
+  - xlrd
 #+END_SRC
