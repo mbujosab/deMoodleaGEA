@@ -28,7 +28,7 @@ def de_Moodle_a_actas(excelMoodle: str, excelActas: str, nombre_columna_con_las_
     
     # Cargar los datos
     df_moodle = pd.read_excel(excelMoodle)  # Excel descargado de Moodle
-    df_gea = pd.read_excel(excelActas)      # Excel de las actas (vacías) descargado de la página de calificación de actas (con extensión .xls).
+    df_gea = pd.read_excel(excelActas)      # Excel de las actas (vacías) descargado de la página de calificación de actas de GEA
 
     # Limpia el DNI en el df_moodle para que no contenga la letra final
     df_moodle['DNI_sin_letra'] = df_moodle['Número de ID'].str[:-1]

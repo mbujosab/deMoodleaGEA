@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2026-02-25 mié 14:29 -->
+<!-- 2026-02-28 sáb 18:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</title>
@@ -197,8 +197,8 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</h1>
-<div id="outline-container-orgb2abc34" class="outline-2">
-<h2 id="orgb2abc34"><span class="section-number-2">1.</span> Primer paso</h2>
+<div id="outline-container-orgeddfeb0" class="outline-2">
+<h2 id="orgeddfeb0"><span class="section-number-2">1.</span> Primer paso</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 La función <code>de_Moodle_a_actas</code> requiere el uso del módulo <code>pandas</code>. 
@@ -213,21 +213,26 @@ Para cargar tanto el módulo como el script, <b>ejecuta la siguiente celda de c�
 </div>
 </div>
 </div>
-<div id="outline-container-org6c9d5ab" class="outline-2">
-<h2 id="org6c9d5ab"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
+<div id="outline-container-orgd4c1ca5" class="outline-2">
+<h2 id="orgd4c1ca5"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <b>Importante</b>: <i>Antes de usar el siguiente bloque de código, lee la sección 3 (Cómo usar el programa).</i> Luego:
 </p>
 <ol class="org-ol">
 <li>Crea la carpeta del grupo (por ejemplo <code>grupoA</code>) y sube a dicha carpeta los archivos Excel que has descargado desde Moodle y GEA.</li>
-<li>Luego edita las cadenas de texto de este bloque de código con los nombres correctos tanto de la carpeta como de los archivos Excel. <b>Si ejecutas el siguiente bloque de código sin editar correctamente los nombres, obtendrás un error</b>.</li>
+<li>Luego edita las cadenas de texto de este bloque de código con los nombres correctos tanto de la carpeta como de los archivos Excel.</li>
 </ol>
+
+<p>
+<b>Ten en cuenta que si ejecutas el siguiente bloque de código sin editar correctamente los nombres, obtendrás un error.</b> 
+(Para un ejemplo funcional sin cambios, mira el siguiente a este).
+</p>
 
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><span style="color: #BA36A5;">subdirectorio</span> = <span style="color: #008000;">'grupoLetra'</span>                                 <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">esta carpeta debe estar creada con antelaci&#243;n
 </span>
-<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeGEA.xls'</span>     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xls)
+<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeGEA.xls'</span>     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xls o xlsx)
 </span>
 <span style="color: #BA36A5;">ficheroMoodle</span> = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeMoodle.xlsx'</span> <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xlsx)
 </span><span style="color: #BA36A5;">columnaNotas</span>  = <span style="color: #008000;">'NombredeLaColumnaConLasNotasParaActas'</span>      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Pasa a actas la columna de calificaciones correcta
@@ -243,14 +248,22 @@ de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + fi
 </div>
 
 <p>
-<i>Nota</i>: Desde Moodle se descargan archivos con extensión <code>xlsx</code>, pero desde GEA puede que la extensión sea <code>xls</code>.
+Nota: Desde Moodle se descargan archivos con la extensión <code>.xlsx</code>, mientras que desde GEA es posible que la extensión sea <code>.xls</code> (en desuso).
 </p>
 </div>
-<div id="outline-container-org8da3c20" class="outline-3">
-<h3 id="org8da3c20"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
+<div id="outline-container-orge62a01c" class="outline-3">
+<h3 id="orge62a01c"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-Dado que en la carpeta <code>GrupoAlpha</code> de este repositorio hay dos archivos Excel similares a los que se obtienen en Moodle y GEA, si ejecutas este bloque se generará un nuevo fichero <code>acta-grupo-alpha.xls</code> creado a partir de los dos archivos Excel de la carpeta <code>GrupoAlpha</code> donde las notas están cumplimentadas y listas para ser subidas a GEA (si dicho grupo y alumnos fueran reales).
+Al ejecutar el siguiente bloque de código se crea el fichero <code>acta-grupo-alpha.xlsx</code>; 
+producto de los dos archivos Excel de la carpeta <code>GrupoAlpha</code>.
+El nuevo fichero tiene el formato del archivo Excel de GEA, 
+pero incorpora las calificaciones de la columna <code>'Total ConvocatoriaOrdinaria (Real)'</code> del Excel supuestamente descargado desde Moodle. 
+Por tanto, ¡Ya está listo para descargarlo a tu PC y subirlo desde ahí a GEA!
+</p>
+
+<p>
+(<i>Pasados unos segundos lo verás en la carpeta raíz de tu entorno MyBinder</i>).
 </p>
 
 <div class="org-src-container">
@@ -279,26 +292,26 @@ Dado que en la carpeta <code>GrupoAlpha</code> de este repositorio hay dos archi
 </div>
 </div>
 </div>
-<div id="outline-container-org054eab4" class="outline-2">
-<h2 id="org054eab4"><span class="section-number-2">3.</span> Cómo usar el programa</h2>
+<div id="outline-container-orgc407f06" class="outline-2">
+<h2 id="orgc407f06"><span class="section-number-2">3.</span> Cómo usar el programa con actas reales</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgb2c0b70" class="outline-3">
-<h3 id="orgb2c0b70"><span class="section-number-3">3.1.</span> Paso previo</h3>
+<div id="outline-container-org682924d" class="outline-3">
+<h3 id="org682924d"><span class="section-number-3">3.1.</span> Paso previo</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li><p>
-<b>Obtener los archivos Excel del grupo</b>
+<b>Obtener los archivos Excel de tu grupo</b>
 </p>
 <ul class="org-ul">
 <li>Accede a <a href="https://geaportal.ucm.es/index.html">https://geaportal.ucm.es/index.html</a> (si estás fuera de la UCM, deberás activar la VPN).</li>
 <li>Ve a <i>Calificación de actas</i>.</li>
-<li>Descarga el archivo Excel con las actas vacías del grupo a calificar (<code>CalificacionExcel.xls</code>).</li>
+<li>Descarga el archivo Excel con las actas vacías del grupo a calificar (<code>CalificacionExcel.xls</code> o <code>CalificacionExcel.xlsx</code>).</li>
 <li>Descarga las calificaciones de tu grupo desde Moodle en un archivo Excel (por ejemplo, <code>aa-abcdef-Calificaciones.xlsx</code>).</li>
 </ul>
 
 <p>
-Si necesitas cumplimentar las actas de varios grupos, es recomendable guardar los dos archivos Excel correspondientes a cada grupo en un subdirectorio distinto para cada grupo (véase el siguiente punto).
+Si necesitas cumplimentar las actas de varios grupos, te recomiendo guardar los dos archivos Excel correspondientes a cada grupo en un subdirectorio distinto para cada grupo (véase el siguiente punto).
 </p></li>
 
 <li><p>
@@ -310,13 +323,13 @@ Para crear un nuevo directorio, haz clic en el ícono de carpeta que tiene el si
 </p>
 
 
-<div id="orgfc8c674" class="figure">
-<p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="350px" />
+<div id="org38c2637" class="figure">
+<p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="550px" />
 </p>
 </div>
 
 <ul class="org-ul">
-<li>Alternativamente, puedes crear un directorio utilizando el menú emergente que aparece al hacer clic con el botón derecho en la columna izquierda.</li>
+<li>Alternativamente, puedes crear un directorio utilizando el menú emergente que aparece al hacer clic con el botón derecho en la columna izquierda (sobre <i>New Folder</i>).</li>
 </ul></li>
 
 <li><p>
@@ -325,34 +338,44 @@ Para crear un nuevo directorio, haz clic en el ícono de carpeta que tiene el si
 
 <p>
 Para subir tus archivos de Excel a la carpeta recién creada, haz clic en la flecha hacia arriba que se encuentra a la derecha del ícono de carpeta que tiene el signo más (+). Esto te permitirá cargar los archivos en el directorio adecuado para la calificación de tu grupo.
-</p></li>
+</p>
+
+
+<div id="org0dff423" class="figure">
+<p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="550px" />
+</p>
+</div></li>
 
 <li><p>
 <b>Ejecutar el código y descargar las actas para poder subirlas a GEA</b>
 </p>
 
 <p>
-Ejecuta el código que aparece más abajo y después descarga el archivo Excel con las actas que se habrá generado en el repositorio virtual de MyBinder (utiliza el menú emergente que aparece al hacer clic con el botón derecho en la columna izquierda). Una vez descargadas las actas, puedes subirlas a GEA.
+Ejecuta el código que aparece más abajo y después descarga el archivo Excel con las actas que se habrá generado en el repositorio virtual de MyBinder.
+Para ello, utiliza el menú emergente que aparece al hacer clic con el botón derecho de tu ratón sobre el nombre del archivo Excel que se ha creado (y que verás en la columna izquierda de tu pantalla). 
+Una vez descargadas las actas a tu PC, puedes subirlas a GEA.
 </p>
 
 
-<div id="org25d294a" class="figure">
+<div id="org894d9c8" class="figure">
 <p><img src="imagenes/MenuDesplegable.png" alt="MenuDesplegable.png" width="350px" />
 </p>
 </div></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org0d3a744" class="outline-3">
-<h3 id="org0d3a744"><span class="section-number-3">3.2.</span> Ejemplo de uso</h3>
+<div id="outline-container-orgdfe1fbd" class="outline-3">
+<h3 id="orgdfe1fbd"><span class="section-number-3">3.2.</span> Ejemplo de arriba, pero ahora paso a paso</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-Supongamos que el archivo descargado desde Moodle es <code>./GrupoAlpha/00-123456-Calificaciones.xlsx</code> (donde <code>./GrupoAlpha/</code> es la ruta hasta el archivo). Y que las calificaciones finales que se van a incluir en las actas se encuentran en la columna con la cabecera <code>Total ConvocatoriaOrdinaria (Real)</code>. 
+Imagina que el archivo descargado desde Moodle es <code>./GrupoAlpha/00-123456-Calificaciones.xlsx</code> (donde <code>./GrupoAlpha/</code> es la ruta hasta el archivo). 
+Y que las calificaciones finales que se van a incluir en las actas se encuentran en la columna con la cabecera <code>Total ConvocatoriaOrdinaria (Real)</code>. 
 </p>
 
 <p>
-Además, el archivo con las actas sin cumplirmentar es <code>./GrupoAlpha/CalificacionExcel.xls</code>. 
-(<i>La carpeta y los archivos Excel del grupo ficticio Alpha ya están creados en la carpeta <code>GrupoAlpha</code> del repositorio para que puedas probar este ejemplo</i>).
+Además, imagina que el archivo con las actas sin cumplimentar es <code>./GrupoAlpha/CalificacionExcel.xls</code>. 
+<i>He creado ambos archivos (correspondientes a un hipotético grupo Alpha). 
+Están en la carpeta <code>GrupoAlpha</code> del repositorio para poder reproducir el ejemplo</i>.
 </p>
 
 <p>
@@ -396,7 +419,7 @@ El archivo Excel que hemos creado se puede cargar en la página donde se rellena
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Marcos Bujosa</p>
-<p class="date">Created: 2026-02-25 mié 14:29</p>
+<p class="date">Created: 2026-02-28 sáb 18:07</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

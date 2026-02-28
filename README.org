@@ -25,16 +25,78 @@ Por esta razón, he creado un script en [[https://www.python.org/][python]] que,
 
 * Si no utilizas Python o no lo tienes instalado
 
-No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio en MyBinder, con todo lo necesario ya instalado. Para ello, accede al cuaderno de Jupyter haciendo clic en el logo
-[[https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb][file:imagenes/badge_logo.svg]]. Lee el cuaderno de Jupyter que se abrirá tras unos instantes (quizá unos minutos si nadie ha accedido a él por algún tiempo, ya que entonces es necesario que se reinstalen los programas en la nube) y sigue las indicaciones que encontrarás allí. 
+No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio en MyBinder, con todo lo necesario ya instalado. 
+Para ello, accede al cuaderno de Jupyter haciendo clic en el logo [[https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb][file:imagenes/badge_logo.svg]]. 
+Lee el cuaderno de Jupyter que se abrirá tras unos instantes (quizá unos minutos hace tiempo que nadie ha accedido a é) y sigue las indicaciones que encontrarás allí. 
 
-Cada vez que accedas, se generará una nueva copia temporal del repositorio a la que solo tú tienes acceso y que desaparecerá tras unos minutos de inactividad. Esto quiere decir que si creas actas en tu copia, dichas actas no existen en otras copias. Es decir, cada copia es única y temporal.
+Cada vez que accedas, se generará un entorno con una copia temporal del repositorio y una sesión para ti, que desaparecerá tras unos minutos de inactividad. 
+Esto quiere decir que si creas actas en tu copia, dichas actas no existen en otras copias. 
+Es decir, cada copia es única y temporal.
 
 Si eso no te gusta, tendrás que instalar Python en tu ordenador (y Jupyter si quieres usar un notebook en lugar de un terminal) y hacer una copia local de este repositorio en tu ordenador.
 
 * Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio
 
 Entonces, seguramente podrás adaptar el código a tus necesidades, siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.
+
+* Aclaración sobre los entornos y sesiones en MyBinder
+   :PROPERTIES:
+   :CUSTOM_ID: aclaracion-sobre-los-entornos-y-sesiones-en-mybinder
+   :END:
+
+En MyBinder, el entorno que se crea es técnicamente accesible para cualquiera que tenga el enlace activo, pero con limitaciones importantes.
+
+** ¿Es accesible para otros?
+
+Depende del enlace:
+
+- Enlace público (URL que compartes) :: Cualquiera que tenga el enlace puede lanzar _su propia_ instancia independiente del entorno.
+- En cuanto a tu sesión específica activa :: No es colaborativa por defecto. Nadie puede entrar en *tu* sesión a menos que compartas exactamente la URL con el token activo (lo cual no es recomendable).
+
+Cada usuario obtiene:
+
+- Su propio contenedor
+- Su propio kernel
+- Su propia memoria temporal
+
+No hay persistencia compartida entre sesiones.
+
+** ¿Cuánto tiempo tarda en desaparecer?
+
+MyBinder funciona con contenedores efímeros. 
+El entorno se elimina tras:
+
+- 10 minutos de inactividad: la sesión se cierra automáticamente.
+- Límite máximo aproximado de 6 horas: aunque haya actividad, el contenedor puede reiniciarse.
+- Si el servidor necesita recursos, puede terminar antes.
+
+Después de cerrarse:
+
+- Se pierde cualquier archivo no guardado externamente.
+- No hay persistencia local.
+- Al volver a abrir el enlace, se crea un entorno nuevo desde el repositorio.
+
+** Consideraciones técnicas importantes
+
+- No es adecuado para producción.
+- No es persistente.
+- Los recursos (CPU/RAM) son limitados.
+- Está pensado para demos, docencia y pruebas reproducibles.
+
+** Resumen 
+
+| Pregunta                            | Respuesta                                                                              |
+|-------------------------------------+----------------------------------------------------------------------------------------|
+| ¿Es el entorno público?             | Sí, si compartes el enlace                                                             |
+| ¿Puede alguien entrar en mi sesión? | Muy improbable, necesita el token aleatorio que se ha generado (no lo compartas nunca) |
+| ¿Es colaborativo en tiempo real?    | No                                                                                     |
+| ¿Guarda cambios?                    | No                                                                                     |
+| ¿Cuándo se borra?                   | ~10 min inactivo o máx ~6h                                                             |
+
+
+
+
+
 
 * COMMENT Directorio =.binder= para MyBinder
 
@@ -47,7 +109,7 @@ Entonces, seguramente podrás adaptar el código a tus necesidades, siempre y cu
 
 Dado que los notebooks del curso emplean algunos módulos de Python, la ejecución online en [[https://mybinder.org/][MyBinder]] de los correspondientes Notebooks de Jupyter requiere la creación de un archivo que indique las dependencias necesarias para que se instale el software requerido. 
 
-#+BEGIN_SRC yml :tangle .binder/environment.yml
+#+BEGIN_SRC txt :tangle .binder/environment.yml
 name: binder-env
 channels:
   - conda-forge

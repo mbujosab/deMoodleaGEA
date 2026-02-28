@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- 2026-02-25 mié 15:27 -->
+<!-- 2026-02-28 sáb 17:19 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>=de_Moodle_a_actas.py=: script de ayuda para profes de la UCM</title>
@@ -23,7 +23,7 @@ Este <a href="https://github.com/mbujosab/deMoodleaGEA">repositorio</a> ofrece u
 
 <div class="org-center">
 
-<figure id="org44460d8">
+<figure id="orgb0d164d">
 <a href="https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb" width="300px" align="center"><img src="imagenes/badge_logo.svg" alt="badge_logo.svg" class="org-svg" width="300px" align="center"></a>
 
 </figure>
@@ -36,16 +36,19 @@ Si, como yo, calificas a los estudiantes en Moodle, es probable que hayas notado
 <p>
 Por esta razón, he creado un script en <a href="https://www.python.org/">python</a> que, utilizando el módulo <a href="https://pandas.pydata.org/"><code>pandas</code></a>, genera un archivo de Excel compatible con GEA a partir de las notas exportadas desde Moodle. El script identifica a los alumnos por su DNI (a pesar de que, por algún motivo que no alcanzo a comprender, el DNI no esté codificado de igual manera en Moodle y en GEA&#x2026; <a href="pasandoNotasDeMoodleaGEA.html">Puedes ver el código aquí</a>).
 </p>
-<div id="outline-container-orgfb17f36" class="outline-2">
-<h2 id="orgfb17f36"><span class="section-number-2">1.</span> Si no utilizas Python o no lo tienes instalado</h2>
+<div id="outline-container-orge980ea8" class="outline-2">
+<h2 id="orge980ea8"><span class="section-number-2">1.</span> Si no utilizas Python o no lo tienes instalado</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio en MyBinder, con todo lo necesario ya instalado. Para ello, accede al cuaderno de Jupyter haciendo clic en el logo
-<a href="https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb"><img src="imagenes/badge_logo.svg" alt="badge_logo.svg" class="org-svg"></a>. Lee el cuaderno de Jupyter que se abrirá tras unos instantes (quizá unos minutos si nadie ha accedido a él por algún tiempo, ya que entonces es necesario que se reinstalen los programas en la nube) y sigue las indicaciones que encontrarás allí. 
+No hay problema. Puedes ejecutar el programa directamente desde tu navegador usando una copia temporal del repositorio en MyBinder, con todo lo necesario ya instalado. 
+Para ello, accede al cuaderno de Jupyter haciendo clic en el logo <a href="https://2i2c.mybinder.org/v2/gh/mbujosab/deMoodleaGEA/main?labpath=%2FDeMoodleaActas.ipynb"><img src="imagenes/badge_logo.svg" alt="badge_logo.svg" class="org-svg"></a>. 
+Lee el cuaderno de Jupyter que se abrirá tras unos instantes (quizá unos minutos hace tiempo que nadie ha accedido a é) y sigue las indicaciones que encontrarás allí. 
 </p>
 
 <p>
-Cada vez que accedas, se generará una nueva copia temporal del repositorio a la que solo tú tienes acceso y que desaparecerá tras unos minutos de inactividad. Esto quiere decir que si creas actas en tu copia, dichas actas no existen en otras copias. Es decir, cada copia es única y temporal.
+Cada vez que accedas, se generará un entorno con una copia temporal del repositorio y una sesión para ti, que desaparecerá tras unos minutos de inactividad. 
+Esto quiere decir que si creas actas en tu copia, dichas actas no existen en otras copias. 
+Es decir, cada copia es única y temporal.
 </p>
 
 <p>
@@ -53,18 +56,135 @@ Si eso no te gusta, tendrás que instalar Python en tu ordenador (y Jupyter si q
 </p>
 </div>
 </div>
-<div id="outline-container-orgb116dd3" class="outline-2">
-<h2 id="orgb116dd3"><span class="section-number-2">2.</span> Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio</h2>
+<div id="outline-container-orgeaa17e6" class="outline-2">
+<h2 id="orgeaa17e6"><span class="section-number-2">2.</span> Si en lugar de usar un archivo Excel exportado desde Moodle, empleas un archivo Excel propio</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Entonces, seguramente podrás adaptar el código a tus necesidades, siempre y cuando dicho archivo incluya los DNIs de tus estudiantes.
 </p>
 </div>
 </div>
+<div id="outline-container-aclaracion-sobre-los-entornos-y-sesiones-en-mybinder" class="outline-2">
+<h2 id="aclaracion-sobre-los-entornos-y-sesiones-en-mybinder"><span class="section-number-2">3.</span> Aclaración sobre los entornos y sesiones en MyBinder</h2>
+<div class="outline-text-2" id="text-aclaracion-sobre-los-entornos-y-sesiones-en-mybinder">
+<p>
+En MyBinder, el entorno que se crea es técnicamente accesible para cualquiera que tenga el enlace activo, pero con limitaciones importantes.
+</p>
+</div>
+<div id="outline-container-orgadac76a" class="outline-3">
+<h3 id="orgadac76a"><span class="section-number-3">3.1.</span> ¿Es accesible para otros?</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Depende del enlace:
+</p>
+
+<dl class="org-dl">
+<dt>Enlace público (URL que compartes)</dt><dd>Cualquiera que tenga el enlace puede lanzar <span class="underline">su propia</span> instancia independiente del entorno.</dd>
+<dt>En cuanto a tu sesión específica activa</dt><dd>No es colaborativa por defecto. Nadie puede entrar en <b>tu</b> sesión a menos que compartas exactamente la URL con el token activo (lo cual no es recomendable).</dd>
+</dl>
+
+<p>
+Cada usuario obtiene:
+</p>
+
+<ul class="org-ul">
+<li>Su propio contenedor</li>
+<li>Su propio kernel</li>
+<li>Su propia memoria temporal</li>
+</ul>
+
+<p>
+No hay persistencia compartida entre sesiones.
+</p>
+</div>
+</div>
+<div id="outline-container-org7b57fec" class="outline-3">
+<h3 id="org7b57fec"><span class="section-number-3">3.2.</span> ¿Cuánto tiempo tarda en desaparecer?</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+MyBinder funciona con contenedores efímeros. 
+El entorno se elimina tras:
+</p>
+
+<ul class="org-ul">
+<li>10 minutos de inactividad: la sesión se cierra automáticamente.</li>
+<li>Límite máximo aproximado de 6 horas: aunque haya actividad, el contenedor puede reiniciarse.</li>
+<li>Si el servidor necesita recursos, puede terminar antes.</li>
+</ul>
+
+<p>
+Después de cerrarse:
+</p>
+
+<ul class="org-ul">
+<li>Se pierde cualquier archivo no guardado externamente.</li>
+<li>No hay persistencia local.</li>
+<li>Al volver a abrir el enlace, se crea un entorno nuevo desde el repositorio.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b3d7b1" class="outline-3">
+<h3 id="org6b3d7b1"><span class="section-number-3">3.3.</span> Consideraciones técnicas importantes</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>No es adecuado para producción.</li>
+<li>No es persistente.</li>
+<li>Los recursos (CPU/RAM) son limitados.</li>
+<li>Está pensado para demos, docencia y pruebas reproducibles.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb38b910" class="outline-3">
+<h3 id="orgb38b910"><span class="section-number-3">3.4.</span> Resumen</h3>
+<div class="outline-text-3" id="text-3-4">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Pregunta</th>
+<th scope="col" class="org-left">Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">¿Es el entorno público?</td>
+<td class="org-left">Sí, si compartes el enlace</td>
+</tr>
+
+<tr>
+<td class="org-left">¿Puede alguien entrar en mi sesión?</td>
+<td class="org-left">Muy improbable, necesita el token aleatorio que se ha generado (no lo compartas nunca)</td>
+</tr>
+
+<tr>
+<td class="org-left">¿Es colaborativo en tiempo real?</td>
+<td class="org-left">No</td>
+</tr>
+
+<tr>
+<td class="org-left">¿Guarda cambios?</td>
+<td class="org-left">No</td>
+</tr>
+
+<tr>
+<td class="org-left">¿Cuándo se borra?</td>
+<td class="org-left">~10 min inactivo o máx ~6h</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Marcos Bujosa</p>
-<p class="date">Created: 2026-02-25 mié 15:27</p>
+<p class="date">Created: 2026-02-28 sáb 17:19</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
