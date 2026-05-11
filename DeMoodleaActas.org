@@ -89,7 +89,7 @@ print(df_Actas)
 ** Paso previo
 
 1. *Obtener los archivos Excel de tu grupo*
-   - Accede a [[https://geaportal.ucm.es/index.html]] (si estás fuera de la UCM, deberás activar la VPN).
+   - Accede a [[https://geaportal.ucm.es/index.html][geaportal.ucm.es]] (si estás fuera de la UCM, quizá necesites activar la VPN).
    - Ve a /Calificación de actas/.
    - Descarga el archivo Excel con las actas vacías del grupo a calificar (=CalificacionExcel.xls= o =CalificacionExcel.xlsx=).
    - Descarga las calificaciones de tu grupo desde Moodle en un archivo Excel (por ejemplo, =aa-abcdef-Calificaciones.xlsx=).
