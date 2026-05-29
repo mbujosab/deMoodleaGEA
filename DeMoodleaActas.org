@@ -33,7 +33,7 @@ import pandas as pd
 #+BEGIN_SRC jupyter-python :eval no
 subdirectorio = 'grupoLetra'                                 # esta carpeta debe estar creada con antelación
 
-ficheroGEA    = 'NombreDelArchivoDescargadoDesdeGEA.xls'     # no te olvides de la extensión del archivo (xls o xlsx)
+ficheroGEA    = 'NombreDelArchivoDescargadoDesdeGEA.xlsx'    # no te olvides de la extensión del archivo (xlsx)
 
 ficheroMoodle = 'NombreDelArchivoDescargadoDesdeMoodle.xlsx' # no te olvides de la extensión del archivo (xlsx)
 columnaNotas  = 'NombredeLaColumnaConLasNotasParaActas'      # Pasa a actas la columna de calificaciones correcta
@@ -47,7 +47,6 @@ de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
 
 #+END_SRC
 
-Nota: Desde Moodle se descargan archivos con la extensión =.xlsx=, mientras que desde GEA es posible que la extensión sea =.xls= (en desuso).
 
 ** Ejemplo de actas de un grupo ficticio "Alpha". 
 
@@ -63,7 +62,7 @@ Por tanto, ¡Ya está listo para descargarlo a tu PC y subirlo desde ahí a GEA!
 #+BEGIN_SRC jupyter-python :results no :eval no
 subdirectorio = 'GrupoAlpha'
 
-ficheroGEA    = 'CalificacionExcel.xls'
+ficheroGEA    = 'CalificacionExcel.xlsx'
 
 ficheroMoodle = '00-123456-Calificaciones.xlsx'
 columnaNotas  = 'Total ConvocatoriaOrdinaria (Real)'
@@ -91,7 +90,7 @@ print(df_Actas)
 1. *Obtener los archivos Excel de tu grupo*
    - Accede a [[https://geaportal.ucm.es/index.html][geaportal.ucm.es]] (si estás fuera de la UCM, quizá necesites activar la VPN).
    - Ve a /Calificación de actas/.
-   - Descarga el archivo Excel con las actas vacías del grupo a calificar (=CalificacionExcel.xls= o =CalificacionExcel.xlsx=).
+   - Descarga el archivo Excel con las actas vacías del grupo a calificar (por ejemplo =2025-26-808080-8-O-8.xlsx=).
    - Descarga las calificaciones de tu grupo desde Moodle en un archivo Excel (por ejemplo, =aa-abcdef-Calificaciones.xlsx=).
 
    Si necesitas cumplimentar las actas de varios grupos, te recomiendo guardar los dos archivos Excel correspondientes a cada grupo en un subdirectorio distinto para cada grupo (véase el siguiente punto).

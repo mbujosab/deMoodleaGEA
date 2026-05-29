@@ -37,28 +37,27 @@ def de_Moodle_a_actas(excelMoodle: str, excelActas: str, nombre_columna_con_las_
     df_moodle['DNI_sin_letra'] = df_moodle['DNI_sin_letra'].str.zfill(8)
 
     # Mantiene los ceros a la izquierda en el df_gea
-    df_gea['Doc. de identidad'] = df_gea['Doc. de identidad'].astype(str).str.zfill(8)
+    df_gea['ALUMNO_DNI'] = df_gea['ALUMNO_DNI'].astype(str).str.zfill(8)
 
     # Realiza el merge (unión) entre los dos DataFrames
     merged_df = pd.merge(df_gea, 
                          df_moodle[['DNI_sin_letra', nombre_columna_con_las_calificaciones]],
-                         left_on='Doc. de identidad', 
+                         left_on='ALUMNO_DNI', 
                          right_on='DNI_sin_letra', 
                          how='left')
 
-    # Rellena la columna 'Nota num.' con las notas de la columna correspondiente en df_moodle y reemplaza '-' por vacíos
-    df_gea['Nota num.'] = merged_df[nombre_columna_con_las_calificaciones].replace('-', '')
+    # Rellena la columna 'CALIFICACION_NUMERICA' con las notas de la columna correspondiente en df_moodle
+    df_gea['CALIFICACION_NUMERICA'] = merged_df[nombre_columna_con_las_calificaciones].replace('-', '').fillna('')
 
-    # Asegura que los NaN en 'Calificación' del DataFrame de GEA se mantengan como vacíos
-    df_gea['Calificación'] = df_gea['Calificación'].where(df_gea['Calificación'].notna(), '')
+    # Asegura que los NaN en 'CODIGO_CALIFICACION' del DataFrame de GEA se mantengan como vacíos
+    df_gea['CODIGO_CALIFICACION'] = df_gea['CODIGO_CALIFICACION'].where(df_gea['CODIGO_CALIFICACION'].notna(), '')
 
     # Devuelve el DataFrame
     return df_gea
 #+END_SRC
 
-#+RESULTS:
-
 Este código lee el archivo de Moodle y el archivo de las actas, identifica a los alumnos de ambos ficheros por el DNI y "pasa a actas" las notas de la columna que se especifique (que contiene las calificaciones finales). La función devuelve un DataFrame con la estructura del archivo de actas que incorpora las calificaciones de cada alumno.
+
 
 * Cómo usarlo
 

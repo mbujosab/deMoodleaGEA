@@ -27,13 +27,13 @@ datos = [
 # --- CREAR CalificacionExcel.xls ---
 # Formato: Apellido, Nombre | ID 8 dígitos con ceros | Columnas extra
 df1_data = {
-    "Doc. de identidad": [str(d['id']).zfill(8) for d in datos],
-    "Alumno/a": [f"{d['a']}, {d['n']}" for d in datos],
-    "Nota num.": [str(d['nota']) for d in datos],
-    "Calificación": [""] * 12
+    "ALUMNO_NOMBRE": [f"{d['a']}, {d['n']}" for d in datos],
+    "ALUMNO_DNI": [str(d['id']).zfill(8) for d in datos],
+    "CALIFICACION_NUMERICA": [str(d['nota']) for d in datos],
+    "CODIGO_CALIFICACION": [""] * 12
 }
 df1 = pd.DataFrame(df1_data)
-df1.to_excel("CalificacionExcel.xls", index=False)
+df1.to_excel("CalificacionExcel.xlsx", index=False)
 
 # --- CREAR 00-123456-Calificaciones.xlsx ---
 # Generar números aleatorios

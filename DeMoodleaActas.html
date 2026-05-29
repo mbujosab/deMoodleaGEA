@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2026-02-28 sáb 18:07 -->
+<!-- 2026-05-29 vie 11:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</title>
@@ -197,8 +197,8 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</h1>
-<div id="outline-container-orgeddfeb0" class="outline-2">
-<h2 id="orgeddfeb0"><span class="section-number-2">1.</span> Primer paso</h2>
+<div id="outline-container-orgbc847fc" class="outline-2">
+<h2 id="orgbc847fc"><span class="section-number-2">1.</span> Primer paso</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 La función <code>de_Moodle_a_actas</code> requiere el uso del módulo <code>pandas</code>. 
@@ -213,8 +213,8 @@ Para cargar tanto el módulo como el script, <b>ejecuta la siguiente celda de c�
 </div>
 </div>
 </div>
-<div id="outline-container-orgd4c1ca5" class="outline-2">
-<h2 id="orgd4c1ca5"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
+<div id="outline-container-org3b3462a" class="outline-2">
+<h2 id="org3b3462a"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <b>Importante</b>: <i>Antes de usar el siguiente bloque de código, lee la sección 3 (Cómo usar el programa).</i> Luego:
@@ -232,7 +232,7 @@ Para cargar tanto el módulo como el script, <b>ejecuta la siguiente celda de c�
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><span style="color: #BA36A5;">subdirectorio</span> = <span style="color: #008000;">'grupoLetra'</span>                                 <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">esta carpeta debe estar creada con antelaci&#243;n
 </span>
-<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeGEA.xls'</span>     <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xls o xlsx)
+<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeGEA.xlsx'</span>    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xlsx)
 </span>
 <span style="color: #BA36A5;">ficheroMoodle</span> = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeMoodle.xlsx'</span> <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xlsx)
 </span><span style="color: #BA36A5;">columnaNotas</span>  = <span style="color: #008000;">'NombredeLaColumnaConLasNotasParaActas'</span>      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Pasa a actas la columna de calificaciones correcta
@@ -246,13 +246,9 @@ de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + fi
 
 </pre>
 </div>
-
-<p>
-Nota: Desde Moodle se descargan archivos con la extensión <code>.xlsx</code>, mientras que desde GEA es posible que la extensión sea <code>.xls</code> (en desuso).
-</p>
 </div>
-<div id="outline-container-orge62a01c" class="outline-3">
-<h3 id="orge62a01c"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
+<div id="outline-container-orgce289f1" class="outline-3">
+<h3 id="orgce289f1"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Al ejecutar el siguiente bloque de código se crea el fichero <code>acta-grupo-alpha.xlsx</code>; 
@@ -269,7 +265,7 @@ Por tanto, ¡Ya está listo para descargarlo a tu PC y subirlo desde ahí a GEA!
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><span style="color: #BA36A5;">subdirectorio</span> = <span style="color: #008000;">'GrupoAlpha'</span>
 
-<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'CalificacionExcel.xls'</span>
+<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'CalificacionExcel.xlsx'</span>
 
 <span style="color: #BA36A5;">ficheroMoodle</span> = <span style="color: #008000;">'00-123456-Calificaciones.xlsx'</span>
 <span style="color: #BA36A5;">columnaNotas</span>  = <span style="color: #008000;">'Total ConvocatoriaOrdinaria (Real)'</span>
@@ -292,21 +288,21 @@ Por tanto, ¡Ya está listo para descargarlo a tu PC y subirlo desde ahí a GEA!
 </div>
 </div>
 </div>
-<div id="outline-container-orgc407f06" class="outline-2">
-<h2 id="orgc407f06"><span class="section-number-2">3.</span> Cómo usar el programa con actas reales</h2>
+<div id="outline-container-org125abb8" class="outline-2">
+<h2 id="org125abb8"><span class="section-number-2">3.</span> Cómo usar el programa con actas reales</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org682924d" class="outline-3">
-<h3 id="org682924d"><span class="section-number-3">3.1.</span> Paso previo</h3>
+<div id="outline-container-org57f3557" class="outline-3">
+<h3 id="org57f3557"><span class="section-number-3">3.1.</span> Paso previo</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li><p>
 <b>Obtener los archivos Excel de tu grupo</b>
 </p>
 <ul class="org-ul">
-<li>Accede a <a href="https://geaportal.ucm.es/index.html">https://geaportal.ucm.es/index.html</a> (si estás fuera de la UCM, deberás activar la VPN).</li>
+<li>Accede a <a href="https://geaportal.ucm.es/index.html">geaportal.ucm.es</a> (si estás fuera de la UCM, quizá necesites activar la VPN).</li>
 <li>Ve a <i>Calificación de actas</i>.</li>
-<li>Descarga el archivo Excel con las actas vacías del grupo a calificar (<code>CalificacionExcel.xls</code> o <code>CalificacionExcel.xlsx</code>).</li>
+<li>Descarga el archivo Excel con las actas vacías del grupo a calificar (por ejemplo <code>2025-26-808080-8-O-8.xlsx</code>).</li>
 <li>Descarga las calificaciones de tu grupo desde Moodle en un archivo Excel (por ejemplo, <code>aa-abcdef-Calificaciones.xlsx</code>).</li>
 </ul>
 
@@ -323,7 +319,7 @@ Para crear un nuevo directorio, haz clic en el ícono de carpeta que tiene el si
 </p>
 
 
-<div id="org38c2637" class="figure">
+<div id="orgf468d8e" class="figure">
 <p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="550px" />
 </p>
 </div>
@@ -341,7 +337,7 @@ Para subir tus archivos de Excel a la carpeta recién creada, haz clic en la fle
 </p>
 
 
-<div id="org0dff423" class="figure">
+<div id="orgf9f0de6" class="figure">
 <p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="550px" />
 </p>
 </div></li>
@@ -357,15 +353,15 @@ Una vez descargadas las actas a tu PC, puedes subirlas a GEA.
 </p>
 
 
-<div id="org894d9c8" class="figure">
+<div id="org00b390c" class="figure">
 <p><img src="imagenes/MenuDesplegable.png" alt="MenuDesplegable.png" width="350px" />
 </p>
 </div></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgdfe1fbd" class="outline-3">
-<h3 id="orgdfe1fbd"><span class="section-number-3">3.2.</span> Ejemplo de arriba, pero ahora paso a paso</h3>
+<div id="outline-container-org14642ed" class="outline-3">
+<h3 id="org14642ed"><span class="section-number-3">3.2.</span> Ejemplo de arriba, pero ahora paso a paso</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Imagina que el archivo descargado desde Moodle es <code>./GrupoAlpha/00-123456-Calificaciones.xlsx</code> (donde <code>./GrupoAlpha/</code> es la ruta hasta el archivo). 
@@ -419,7 +415,7 @@ El archivo Excel que hemos creado se puede cargar en la página donde se rellena
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Marcos Bujosa</p>
-<p class="date">Created: 2026-02-28 sáb 18:07</p>
+<p class="date">Created: 2026-05-29 vie 11:37</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
