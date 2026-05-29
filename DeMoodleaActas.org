@@ -18,7 +18,14 @@ import pandas as pd
 %run de_moodle_a_actas.py
 #+END_SRC
 
-#+RESULTS:
+El siguiente bloque es para evitar un advertencia que proviene de openpyxl (la biblioteca que pandas y otras herramientas utilizan para leer archivos .xlsx). Dicha advertencia se produce los archivo de Excel que estamos usando han sido generados por aplicaciones de terceros (como Google Sheets, LibreOffice o una exportación automatizada de base de datos) en lugar de la Microsoft Excel oficial.
+
+Debido a que estas herramientas a veces omiten agregar una etiqueta de metadatos de "estilo predeterminado" a la estructura del archivo, openpyxl nota que falta, te advierte y aplica automáticamente su propio estilo predeterminado para poder seguir leyendo el archivo.
+#+BEGIN_SRC jupyter-python
+import warnings
+# Filter out the specific openpyxl default style warning
+warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
+#+END_SRC
 
 
 * Ejemplo para que lo edites y lo adaptes a tu caso
@@ -37,12 +44,37 @@ ficheroGEA    = 'NombreDelArchivoDescargadoDesdeGEA.xlsx'    # no te olvides de 
 
 ficheroMoodle = 'NombreDelArchivoDescargadoDesdeMoodle.xlsx' # no te olvides de la extensión del archivo (xlsx)
 columnaNotas  = 'NombredeLaColumnaConLasNotasParaActas'      # Pasa a actas la columna de calificaciones correcta
+columnaPresentados = 'NombredeLaColumnaDePresentados'        # Pasa las calificaciones de estos alumnos si la columna existe
 
 actasParaSubirAGEA = 'NombreFicheroASubir.xlsx'              # el fichero con las notas que subirás a GEA 
 
 de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
                    subdirectorio + '/' + ficheroGEA,
                    columnaNotas).to_excel(subdirectorio + '/' + actasParaSubirAGEA,
+                                          index=False) 
+
+#+END_SRC
+
+
+*** Variante que solo copia las calificaciones de aquellos alumnos presentados
+
+Si el excel de Moodle contiene una columna que indica con un =1= que el alumno se ha presentado, podemos usar la variante =de_Moodle_a_actas_presentados=; que solo traspasa las notas de dichos alumnos.
+
+#+BEGIN_SRC jupyter-python :eval no
+subdirectorio = 'grupoLetra'                                 # esta carpeta debe estar creada con antelación
+
+ficheroGEA    = 'NombreDelArchivoDescargadoDesdeGEA.xlsx'    # no te olvides de la extensión del archivo (xlsx)
+
+ficheroMoodle = 'NombreDelArchivoDescargadoDesdeMoodle.xlsx' # no te olvides de la extensión del archivo (xlsx)
+columnaNotas  = 'NombredeLaColumnaConLasNotasParaActas'      # Pasa a actas la columna de calificaciones correcta
+columnaPresentados  = 'NombredeLaColumnaQueIndicaLosPresentados'  # Pasa a actas la columna de calificaciones correcta pero solo de estos alumnos
+
+actasParaSubirAGEA = 'NombreFicheroASubir.xlsx'              # el fichero con las notas que subirás a GEA 
+
+de_Moodle_a_actas_presentados( subdirectorio + '/' + ficheroMoodle,
+                               subdirectorio + '/' + ficheroGEA,
+                               columnaNotas,
+                               columnaPresentados).to_excel(subdirectorio + '/' + actasParaSubirAGEA,
                                           index=False) 
 
 #+END_SRC
@@ -188,3 +220,65 @@ de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
                                           index=False) 
 #+END_SRC
 
+#+BEGIN_SRC jupyter-python :eval no
+subdirectorio = 'C-mayo'                                 # esta carpeta debe estar creada con antelación
+
+ficheroGEA    = '2025-26-802349-7-J-0.xlsx'    # no te olvides de la extensión del archivo (xlsx)
+
+ficheroMoodle = '25-887520 Calificaciones.xlsx' # no te olvides de la extensión del archivo (xlsx)
+columnaNotas  = 'Acta ordinaria (Real)'         # Pasa a actas la columna de calificaciones correcta
+columnaPresentados  = 'Total Presentado (Real)' # Pasa a actas la columna de calificaciones correcta pero solo de estos alumnos
+
+actasParaSubirAGEA = 'C-mayo.xlsx'              # el fichero con las notas que subirás a GEA 
+#+END_SRC
+
+#+BEGIN_SRC jupyter-python  :eval no
+de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
+                   subdirectorio + '/' + ficheroGEA,
+                   columnaNotas,
+                   columnaPresentados).to_excel(subdirectorio + '/' + actasParaSubirAGEA,
+                                                index=False) 
+#+END_SRC
+
+#+BEGIN_SRC jupyter-python :eval no
+subdirectorio = 'E-mayo'                                 # esta carpeta debe estar creada con antelación
+
+ficheroGEA    = '2025-26-802349-7-J-0.xlsx'    # no te olvides de la extensión del archivo (xlsx)
+
+ficheroMoodle = '25-887518 Calificaciones.xlsx' # no te olvides de la extensión del archivo (xlsx)
+columnaNotas  = 'Convocatoria Ordinaria (Real)'         # Pasa a actas la columna de calificaciones correcta
+columnaPresentados  = 'Total Presentado (Real)' # Pasa a actas la columna de calificaciones correcta pero solo de estos alumnos
+
+actasParaSubirAGEA = 'E-mayo.xlsx'              # el fichero con las notas que subirás a GEA 
+#+END_SRC
+
+#+BEGIN_SRC jupyter-python  :eval no
+de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
+                   subdirectorio + '/' + ficheroGEA,
+                   columnaNotas,
+                   columnaPresentados).to_excel(subdirectorio + '/' + actasParaSubirAGEA,
+                                                index=False) 
+#+END_SRC
+
+
+#+BEGIN_SRC jupyter-python :eval no
+subdirectorio = 'E-RRII-mayo'                                 # esta carpeta debe estar creada con antelación
+
+ficheroGEA    = '2025-26-901791-6-J-0.xlsx'    # no te olvides de la extensión del archivo (xlsx)
+
+ficheroMoodle = '25-887518 Calificaciones.xlsx' # no te olvides de la extensión del archivo (xlsx)
+columnaNotas  = 'Convocatoria Ordinaria (Real)'         # Pasa a actas la columna de calificaciones correcta
+columnaPresentados  = 'Total Presentado (Real)' # Pasa a actas la columna de calificaciones correcta pero solo de estos alumnos
+
+actasParaSubirAGEA = 'E-RRII-mayo.xlsx'              # el fichero con las notas que subirás a GEA 
+#+END_SRC
+
+
+
+#+BEGIN_SRC jupyter-python  :eval no
+de_Moodle_a_actas( subdirectorio + '/' + ficheroMoodle,
+                   subdirectorio + '/' + ficheroGEA,
+                   columnaNotas,
+                   columnaPresentados).to_excel(subdirectorio + '/' + actasParaSubirAGEA,
+                                                index=False) 
+#+END_SRC

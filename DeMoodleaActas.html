@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2026-05-29 vie 11:37 -->
+<!-- 2026-05-29 vie 13:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</title>
@@ -197,8 +197,8 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Cuaderno electrónico para pasar notas de Moodle a las actas de GEA</h1>
-<div id="outline-container-orgbc847fc" class="outline-2">
-<h2 id="orgbc847fc"><span class="section-number-2">1.</span> Primer paso</h2>
+<div id="outline-container-org70527c5" class="outline-2">
+<h2 id="org70527c5"><span class="section-number-2">1.</span> Primer paso</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 La función <code>de_Moodle_a_actas</code> requiere el uso del módulo <code>pandas</code>. 
@@ -211,10 +211,24 @@ Para cargar tanto el módulo como el script, <b>ejecuta la siguiente celda de c�
 %run de_moodle_a_actas.py
 </pre>
 </div>
+
+<p>
+El siguiente bloque es para evitar un advertencia que proviene de openpyxl (la biblioteca que pandas y otras herramientas utilizan para leer archivos .xlsx). Dicha advertencia se produce los archivo de Excel que estamos usando han sido generados por aplicaciones de terceros (como Google Sheets, LibreOffice o una exportación automatizada de base de datos) en lugar de la Microsoft Excel oficial.
+</p>
+
+<p>
+Debido a que estas herramientas a veces omiten agregar una etiqueta de metadatos de "estilo predeterminado" a la estructura del archivo, openpyxl nota que falta, te advierte y aplica automáticamente su propio estilo predeterminado para poder seguir leyendo el archivo.
+</p>
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #0000FF; font-weight: bold;">import</span> warnings
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Filter out the specific openpyxl default style warning
+</span>warnings.filterwarnings(<span style="color: #008000;">"ignore"</span>, category=<span style="color: #6434A3;">UserWarning</span>, module=<span style="color: #008000;">"openpyxl"</span>)
+</pre>
 </div>
 </div>
-<div id="outline-container-org3b3462a" class="outline-2">
-<h2 id="org3b3462a"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
+</div>
+<div id="outline-container-orgb552c2e" class="outline-2">
+<h2 id="orgb552c2e"><span class="section-number-2">2.</span> Ejemplo para que lo edites y lo adaptes a tu caso</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <b>Importante</b>: <i>Antes de usar el siguiente bloque de código, lee la sección 3 (Cómo usar el programa).</i> Luego:
@@ -236,6 +250,7 @@ Para cargar tanto el módulo como el script, <b>ejecuta la siguiente celda de c�
 </span>
 <span style="color: #BA36A5;">ficheroMoodle</span> = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeMoodle.xlsx'</span> <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xlsx)
 </span><span style="color: #BA36A5;">columnaNotas</span>  = <span style="color: #008000;">'NombredeLaColumnaConLasNotasParaActas'</span>      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Pasa a actas la columna de calificaciones correcta
+</span><span style="color: #BA36A5;">columnaPresentados</span> = <span style="color: #008000;">'NombredeLaColumnaDePresentados'</span>        <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Pasa las calificaciones de estos alumnos si la columna existe
 </span>
 <span style="color: #BA36A5;">actasParaSubirAGEA</span> = <span style="color: #008000;">'NombreFicheroASubir.xlsx'</span>              <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">el fichero con las notas que subir&#225;s a GEA 
 </span>
@@ -247,8 +262,36 @@ de_Moodle_a_actas( subdirectorio + <span style="color: #008000;">'/'</span> + fi
 </pre>
 </div>
 </div>
-<div id="outline-container-orgce289f1" class="outline-3">
-<h3 id="orgce289f1"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
+<div id="outline-container-org63c4192" class="outline-4">
+<h4 id="org63c4192"><span class="section-number-4">2.0.1.</span> Variante que solo copia las calificaciones de aquellos alumnos presentados</h4>
+<div class="outline-text-4" id="text-2-0-1">
+<p>
+Si el excel de Moodle contiene una columna que indica con un <code>1</code> que el alumno se ha presentado, podemos usar la variante <code>de_Moodle_a_actas_presentados</code>; que solo traspasa las notas de dichos alumnos.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #BA36A5;">subdirectorio</span> = <span style="color: #008000;">'grupoLetra'</span>                                 <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">esta carpeta debe estar creada con antelaci&#243;n
+</span>
+<span style="color: #BA36A5;">ficheroGEA</span>    = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeGEA.xlsx'</span>    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xlsx)
+</span>
+<span style="color: #BA36A5;">ficheroMoodle</span> = <span style="color: #008000;">'NombreDelArchivoDescargadoDesdeMoodle.xlsx'</span> <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">no te olvides de la extensi&#243;n del archivo (xlsx)
+</span><span style="color: #BA36A5;">columnaNotas</span>  = <span style="color: #008000;">'NombredeLaColumnaConLasNotasParaActas'</span>      <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Pasa a actas la columna de calificaciones correcta
+</span><span style="color: #BA36A5;">columnaPresentados</span>  = <span style="color: #008000;">'NombredeLaColumnaQueIndicaLosPresentados'</span>  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Pasa a actas la columna de calificaciones correcta pero solo de estos alumnos
+</span>
+<span style="color: #BA36A5;">actasParaSubirAGEA</span> = <span style="color: #008000;">'NombreFicheroASubir.xlsx'</span>              <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">el fichero con las notas que subir&#225;s a GEA 
+</span>
+de_Moodle_a_actas_presentados( subdirectorio + <span style="color: #008000;">'/'</span> + ficheroMoodle,
+                               subdirectorio + <span style="color: #008000;">'/'</span> + ficheroGEA,
+                               columnaNotas,
+                               columnaPresentados).to_excel(subdirectorio + <span style="color: #008000;">'/'</span> + actasParaSubirAGEA,
+                                          index=<span style="color: #D0372D;">False</span>) 
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8af30c2" class="outline-3">
+<h3 id="org8af30c2"><span class="section-number-3">2.1.</span> Ejemplo de actas de un grupo ficticio "Alpha".</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Al ejecutar el siguiente bloque de código se crea el fichero <code>acta-grupo-alpha.xlsx</code>; 
@@ -288,12 +331,12 @@ Por tanto, ¡Ya está listo para descargarlo a tu PC y subirlo desde ahí a GEA!
 </div>
 </div>
 </div>
-<div id="outline-container-org125abb8" class="outline-2">
-<h2 id="org125abb8"><span class="section-number-2">3.</span> Cómo usar el programa con actas reales</h2>
+<div id="outline-container-orgd85bfe4" class="outline-2">
+<h2 id="orgd85bfe4"><span class="section-number-2">3.</span> Cómo usar el programa con actas reales</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org57f3557" class="outline-3">
-<h3 id="org57f3557"><span class="section-number-3">3.1.</span> Paso previo</h3>
+<div id="outline-container-orgee6a247" class="outline-3">
+<h3 id="orgee6a247"><span class="section-number-3">3.1.</span> Paso previo</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li><p>
@@ -319,7 +362,7 @@ Para crear un nuevo directorio, haz clic en el ícono de carpeta que tiene el si
 </p>
 
 
-<div id="orgf468d8e" class="figure">
+<div id="org25fc685" class="figure">
 <p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="550px" />
 </p>
 </div>
@@ -337,7 +380,7 @@ Para subir tus archivos de Excel a la carpeta recién creada, haz clic en la fle
 </p>
 
 
-<div id="orgf9f0de6" class="figure">
+<div id="orgc294512" class="figure">
 <p><img src="imagenes/CrearDirectorio.png" alt="CrearDirectorio.png" width="550px" />
 </p>
 </div></li>
@@ -353,15 +396,15 @@ Una vez descargadas las actas a tu PC, puedes subirlas a GEA.
 </p>
 
 
-<div id="org00b390c" class="figure">
+<div id="orge9f2d62" class="figure">
 <p><img src="imagenes/MenuDesplegable.png" alt="MenuDesplegable.png" width="350px" />
 </p>
 </div></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org14642ed" class="outline-3">
-<h3 id="org14642ed"><span class="section-number-3">3.2.</span> Ejemplo de arriba, pero ahora paso a paso</h3>
+<div id="outline-container-orge7241db" class="outline-3">
+<h3 id="orge7241db"><span class="section-number-3">3.2.</span> Ejemplo de arriba, pero ahora paso a paso</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Imagina que el archivo descargado desde Moodle es <code>./GrupoAlpha/00-123456-Calificaciones.xlsx</code> (donde <code>./GrupoAlpha/</code> es la ruta hasta el archivo). 
@@ -415,7 +458,7 @@ El archivo Excel que hemos creado se puede cargar en la página donde se rellena
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Marcos Bujosa</p>
-<p class="date">Created: 2026-05-29 vie 11:37</p>
+<p class="date">Created: 2026-05-29 vie 13:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
